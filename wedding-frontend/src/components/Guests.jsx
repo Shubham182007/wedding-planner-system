@@ -44,7 +44,7 @@ const Guests = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.get(`http://localhost:5000/api/guests/${activeClientId}`);
+      const response = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/guests/${activeClientId}`);
       setGuests(response.data);
     } catch (err) {
       console.error('Error fetching guests:', err);
@@ -75,7 +75,7 @@ const Guests = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/guests', payload);
+      const response = await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/guests', payload);
       setSuccessMessage(response.data.message || 'Guest added successfully!');
       
       // Reset form fields
@@ -97,7 +97,7 @@ const Guests = () => {
 
   const handleStatusChange = async (guestId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/guests/${guestId}`, { rsvp_status: newStatus });
+      await axios.put(`https://wedding-planner-backend-zjgi.onrender.com/api/guests/${guestId}`, { rsvp_status: newStatus });
       fetchGuests();
     } catch (err) {
       alert('Failed to update RSVP status');
@@ -107,7 +107,7 @@ const Guests = () => {
   const handleDeleteGuest = async (guestId) => {
     if (!window.confirm('Are you sure you want to remove this guest?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/guests/${guestId}`);
+      await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/guests/${guestId}`);
       fetchGuests();
     } catch (err) {
       alert('Failed to delete guest');

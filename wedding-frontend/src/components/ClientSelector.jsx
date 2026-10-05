@@ -11,7 +11,7 @@ const ClientSelector = ({ onSelectClient }) => {
 
   const fetchClients = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/client-weddings');
+      const res = await axios.get('https://wedding-planner-backend-zjgi.onrender.com/api/admin/client-weddings');
       setClients(res.data);
 
       // Auto-select first client if none selected

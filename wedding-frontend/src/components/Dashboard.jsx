@@ -11,7 +11,7 @@ const Dashboard = ({ setActiveClientId }) => {
       const savedInquiries = JSON.parse(localStorage.getItem('wedding_inquiries') || '[]');
 
       try {
-        const response = await fetch('http://localhost:5000/api/admin/client-weddings');
+        const response = await fetch('https://wedding-planner-backend-zjgi.onrender.com/api/admin/client-weddings');
         if (response.ok) {
           const clients = await response.json();
           const migratedInquiries = savedInquiries.map((inquiry) => {
@@ -39,7 +39,7 @@ const Dashboard = ({ setActiveClientId }) => {
     let activeClientId = inquiry.userId;
     if (!activeClientId) {
       try {
-        const response = await fetch('http://localhost:5000/api/admin/resolve-client', {
+        const response = await fetch('https://wedding-planner-backend-zjgi.onrender.com/api/admin/resolve-client', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ couple_name: inquiry.coupleName, contact_email: inquiry.email }),
@@ -81,7 +81,7 @@ const Dashboard = ({ setActiveClientId }) => {
 
     try {
       if (inquiry.clientId) {
-        const response = await fetch(`http://localhost:5000/api/admin/client-weddings/${inquiry.clientId}`, {
+        const response = await fetch(`https://wedding-planner-backend-zjgi.onrender.com/api/admin/client-weddings/${inquiry.clientId}`, {
           method: 'DELETE',
         });
 

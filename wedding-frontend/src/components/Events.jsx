@@ -27,7 +27,7 @@ export default function Events() {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/events/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/events/${activeClientId}`);
       setEvents(res.data);
     } catch (err) {
       console.error('Failed to load events:', err);
@@ -37,7 +37,7 @@ export default function Events() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/events', {
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/events', {
         ...formData,
         user_id: activeClientId
       });
@@ -53,7 +53,7 @@ export default function Events() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/events/${id}`);
+        await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/events/${id}`);
         fetchEvents();
       } catch (err) {
         console.error('Failed to delete event:', err);

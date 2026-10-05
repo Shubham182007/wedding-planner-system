@@ -10,7 +10,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/register', formData);
       setMessage('Registration successful! Redirecting...');
       setTimeout(() => navigate('/login'), 1500);
     } catch (err) {

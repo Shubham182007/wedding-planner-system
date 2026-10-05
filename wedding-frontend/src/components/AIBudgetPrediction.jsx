@@ -31,7 +31,7 @@ export default function AIBudgetPrediction() {
     setApplyMessage('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/predict-budget', {
+      const res = await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/predict-budget', {
         user_id: activeClientId,
         guest_count: guestCount,
         venue_tier: venueTier,
@@ -54,7 +54,7 @@ export default function AIBudgetPrediction() {
     if (!prediction) return;
 
     try {
-      await axios.post('http://localhost:5000/api/budget/set-target', {
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/budget/set-target', {
         user_id: activeClientId,
         total_budget: prediction.estimated_total
       });

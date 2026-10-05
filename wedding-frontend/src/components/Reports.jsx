@@ -18,7 +18,7 @@ export default function Reports() {
 
   const fetchSummary = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/reports/summary/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/reports/summary/${activeClientId}`);
       setSummary(res.data);
     } catch (err) {
       console.error('Error fetching report analytics:', err);

@@ -35,7 +35,7 @@ const PublicInquiry = () => {
 
     try {
       // 1. Send data to the backend and use its database ID for the active wedding
-      const response = await fetch('http://localhost:5000/api/public/wedding-inquiry', {
+      const response = await fetch('https://wedding-planner-backend-zjgi.onrender.com/api/public/wedding-inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

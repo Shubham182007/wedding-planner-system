@@ -32,7 +32,7 @@ export default function Budget() {
 
   const fetchBudgetData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/budget/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/budget/${activeClientId}`);
       setTotalBudget(Number(res.data.total_budget) || 0);
       setInputBudget(res.data.total_budget || '');
       setExpenses(res.data.expenses || []);
@@ -44,7 +44,7 @@ export default function Budget() {
   const handleSetTargetBudget = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/budget/set-target', {
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/budget/set-target', {
         user_id: activeClientId,
         total_budget: inputBudget
       });
@@ -60,10 +60,10 @@ export default function Budget() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/expenses/${editingId}`, formData);
+        await axios.put(`https://wedding-planner-backend-zjgi.onrender.com/api/expenses/${editingId}`, formData);
         setMessage('✅ Expense updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/expenses', {
+        await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/expenses', {
           ...formData,
           user_id: activeClientId
         });
@@ -91,7 +91,7 @@ export default function Budget() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this expense record?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+        await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/expenses/${id}`);
         fetchBudgetData();
       } catch (err) {
         console.error('Failed to delete expense:', err);

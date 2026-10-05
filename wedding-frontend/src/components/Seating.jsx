@@ -27,7 +27,7 @@ export default function Seating() {
 
   const fetchSeatingData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/seating/tables/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/seating/tables/${activeClientId}`);
       setTables(res.data.tables || []);
       setAssignments(res.data.assignments || []);
     } catch (err) {
@@ -37,7 +37,7 @@ export default function Seating() {
 
   const fetchGuests = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/guests/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/guests/${activeClientId}`);
       setGuests(res.data || []);
     } catch (err) {
       console.error('Error fetching guests:', err);
@@ -47,7 +47,7 @@ export default function Seating() {
   const handleCreateTable = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/seating/tables', {
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/seating/tables', {
         user_id: activeClientId,
         table_name: tableName,
         capacity: capacity
@@ -65,7 +65,7 @@ export default function Seating() {
   const handleDeleteTable = async (id) => {
     if (window.confirm('Are you sure? This will remove all guest assignments for this table.')) {
       try {
-        await axios.delete(`http://localhost:5000/api/seating/tables/${id}`);
+        await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/seating/tables/${id}`);
         fetchSeatingData();
       } catch (err) {
         console.error('Error deleting table:', err);
@@ -78,7 +78,7 @@ export default function Seating() {
     if (!selectedGuest || !selectedTable) return;
 
     try {
-      await axios.post('http://localhost:5000/api/seating/assign', {
+      await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/seating/assign', {
         user_id: activeClientId,
         table_id: selectedTable,
         guest_id: selectedGuest
@@ -95,7 +95,7 @@ export default function Seating() {
 
   const handleUnassignGuest = async (assignmentId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/seating/unassign/${assignmentId}`);
+      await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/seating/unassign/${assignmentId}`);
       fetchSeatingData();
     } catch (err) {
       console.error('Failed to unassign guest:', err);

@@ -32,7 +32,7 @@ export default function Vendors() {
 
   const fetchVendors = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/vendors/${activeClientId}`);
+      const res = await axios.get(`https://wedding-planner-backend-zjgi.onrender.com/api/vendors/${activeClientId}`);
       setVendors(res.data);
     } catch (err) {
       console.error('Failed to load vendors:', err);
@@ -43,10 +43,10 @@ export default function Vendors() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/vendors/${editingId}`, formData);
+        await axios.put(`https://wedding-planner-backend-zjgi.onrender.com/api/vendors/${editingId}`, formData);
         setMessage('✅ Vendor updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/vendors', {
+        await axios.post('https://wedding-planner-backend-zjgi.onrender.com/api/vendors', {
           ...formData,
           user_id: activeClientId
         });
@@ -76,7 +76,7 @@ export default function Vendors() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this vendor?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/vendors/${id}`);
+        await axios.delete(`https://wedding-planner-backend-zjgi.onrender.com/api/vendors/${id}`);
         fetchVendors();
       } catch (err) {
         console.error('Failed to delete vendor:', err);
