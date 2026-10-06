@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
+import AdminLogin from './components/AdminLogin';
 
 // Admin Components
 import AdminHeader from './components/AdminHeader';
@@ -38,6 +39,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
 
           {/* Admin Module Routes */}
           <Route path="/dashboard" element={<Dashboard />} />

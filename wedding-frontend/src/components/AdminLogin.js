@@ -12,8 +12,12 @@ const AdminLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (credentials.email === 'admin@wedsync.com' && credentials.password === 'admin123') {
-      navigate('/admin/dashboard'); // Redirects to Admin Dashboard
+    if (
+      credentials.email === 'admin@wedsync.com' &&
+      credentials.password === 'admin123'
+    ) {
+      localStorage.setItem('adminLoggedIn', 'true');
+      navigate('/dashboard');
     } else {
       setError('Invalid credentials. Please check your email and password.');
     }

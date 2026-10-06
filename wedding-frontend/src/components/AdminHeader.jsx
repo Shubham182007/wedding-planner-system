@@ -7,7 +7,8 @@ const AdminHeader = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminAuthenticated');
-    navigate('/login');
+    localStorage.removeItem('selectedClientId');
+    navigate('/admin/login');
   };
 
   const adminNavs = [
@@ -24,7 +25,7 @@ const AdminHeader = () => {
   return (
     <header style={{ backgroundColor: '#1c100b', color: '#fff', borderBottom: '1px solid rgba(212, 175, 55, 0.3)', padding: '12px 24px' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-        
+
         {/* BRAND TITLE */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <span
