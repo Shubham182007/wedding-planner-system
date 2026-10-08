@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // 1. ALL HOOKS MUST BE CALLED AT THE TOP LEVEL
   useEffect(() => {
@@ -44,7 +46,7 @@ const Navbar = () => {
         padding: isScrolled ? '14px 0' : '22px 0',
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="navbar-container">
         {/* BRAND LOGO */}
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span
@@ -74,13 +76,30 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* DESKTOP NAVIGATION LINKS */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '28px', fontFamily: 'sans-serif' }}>
+        <button
+          className="navbar-menu-toggle"
+          type="button"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav
+          id="primary-navigation"
+          className={`navbar-navigation${isMenuOpen ? ' is-open' : ''}`}
+          aria-label="Primary navigation"
+        >
           {navLinks.map((link, index) =>
             link.isRouterLink ? (
               <Link
                 key={index}
                 to={link.href}
+                onClick={() => setIsMenuOpen(false)}
                 style={{
                   color: '#fef08a',
                   textDecoration: 'none',
@@ -99,6 +118,7 @@ const Navbar = () => {
               <a
                 key={index}
                 href={link.href}
+                onClick={() => setIsMenuOpen(false)}
                 style={{
                   color: '#ffffff',
                   textDecoration: 'none',
