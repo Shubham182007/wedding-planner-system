@@ -1,0 +1,40 @@
+.hero-badge {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 22px;
+}
+
+.hero-badge-label {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 9px 26px;
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fef08a;
+  backdrop-filter: blur(10px);
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero-badge-mobile-break {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .hero-badge-label {
+    padding: 8px 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.7;
+  }
+
+  .hero-badge-mobile-break {
+    display: block;
+  }
+}

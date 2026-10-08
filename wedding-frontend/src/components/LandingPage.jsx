@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import PublicInquiry from './PublicInquiry';
 import Navbar from './Navbar';
+import './LandingPage.css';
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -119,21 +120,9 @@ const LandingPage = () => {
           }}
         >
           {/* Luxury Badge */}
-          <div ref={badgeRef} style={{ display: 'inline-block', marginBottom: '22px' }}>
-            <span style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.12)', 
-              backdropFilter: 'blur(10px)',
-              color: '#fef08a', 
-              border: '1px solid rgba(254, 240, 138, 0.4)',
-              fontSize: '11px', 
-              fontWeight: '700', 
-              padding: '9px 26px', 
-              borderRadius: '30px', 
-              letterSpacing: '2.5px',
-              textTransform: 'uppercase',
-              fontFamily: 'sans-serif'
-            }}>
-              BESPOKE WEDDING ARCHITECTURE & MANAGEMENT
+          <div ref={badgeRef} className="hero-badge">
+            <span className="hero-badge-label">
+              BESPOKE WEDDING<span className="hero-badge-mobile-break"><br /></span> ARCHITECTURE & MANAGEMENT
             </span>
           </div>
           
